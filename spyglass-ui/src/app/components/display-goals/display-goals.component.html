@@ -1,0 +1,15 @@
+<form (submit)="getGoals()">
+    <label class="labels" for="searchName">Enter Email:</label> <br>
+    <input type="text" pInputText name="searchName" [(ngModel)]="username"/> <br>
+    <button pButton type="submit" class="p-button-raised p-button-rounded p-button-success">Submit</button>
+</form>
+<p-table [value]="goals" styleClass="p-datatable-gridlines">
+    <ng-template pTemplate="header">
+        <tr><th class="text-center">Goal Name</th></tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-goal>
+        <tr class="center">
+            <td class="text-center">{{goal.name}}</td>
+        </tr>
+    </ng-template>
+</p-table>
