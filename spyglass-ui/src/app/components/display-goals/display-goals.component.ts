@@ -12,6 +12,7 @@ export class DisplayGoalsComponent implements OnInit {
   service: GoalService;
   goals: Array<Goal> = [];
   username: string;
+  value: number = 50;
 
   constructor(service: GoalService) {
     this.service = service;

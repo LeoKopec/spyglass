@@ -8,6 +8,8 @@ import { DisplayGoalsComponent } from './components/display-goals/display-goals.
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { FormsModule } from '@angular/forms';
+import {DataViewModule} from 'primeng/dataview';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     TableModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    DataViewModule,
+    ProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

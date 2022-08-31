@@ -1,9 +1,45 @@
+<div class="display-data">
+    <p-dataView [value]="goals" [paginator]="true" [rows]="10">
+        <ng-template pTemplate="header">List of Goals</ng-template>
+        <ng-template let-goal pTemplate="listItem">
+            <div class="flex-container">
+                <div class="left-side">
+                    <div><img src="../../../assets/placeholder.png" alt="goal image"></div>
+                    <div class="details">
+                        <div class="top">
+                            <div class="goal-name">{{goal.name}}</div>
+                            <div class="goal-description">{{goal.description}}</div>
+                        </div>
+                        <div class="bottom">
+                            <div class="progress">Progress:</div>
+                            <div class="goal-money"><b>{{goal.currentAmount | currency}}</b> of <b>{{goal.totalAmount | currency}}</b></div>
+                            <div><p-progressBar [showValue]="false" [value]="((goal.currentAmount / goal.totalAmount) * 100)" [style]="{'height': '1.5em'}"></p-progressBar></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right-side">
+                    <div class="view"><button pButton pRipple type="button" label="View Goal"></button></div>
+                    <br>
+                    <div class="delete"><button pButton pRipple type="button" label="Delete Goal"></button></div>
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
 <form (submit)="getGoals()">
     <label class="labels" for="searchName">Enter Email:</label> <br>
     <input type="text" pInputText name="searchName" [(ngModel)]="username"/> <br>
     <button pButton type="submit" class="p-button-raised p-button-rounded p-button-success">Submit</button>
 </form>
-<p-table [value]="goals" styleClass="p-datatable-gridlines">
+
+
+
+
+
+
+
+
+<!-- <p-table [value]="goals" styleClass="p-datatable-gridlines">
     <ng-template pTemplate="header">
         <tr><th class="text-center">Goal Name</th></tr>
     </ng-template>
@@ -12,4 +48,4 @@
             <td class="text-center">{{goal.name}}</td>
         </tr>
     </ng-template>
-</p-table>
+</p-table> -->

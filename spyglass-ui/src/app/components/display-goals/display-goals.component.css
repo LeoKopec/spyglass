@@ -1,0 +1,44 @@
+.display-data {
+    padding: 2em 10em 2em 10em;
+}
+.flex-container {
+    display: flex;
+    padding: 1em;
+    justify-content:space-between;
+    align-items: center;
+}
+.left-side {
+    display: flex;
+}
+.details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.5em;
+}
+.goal-name {
+    font-weight:bold;
+    font-size: x-large;
+}
+.goal-description {
+    font-size: medium;
+    color: #495057;
+}
+.bottom {
+    padding-bottom: 1.5em;
+}
+.progress {
+    font-weight: 700;
+    font-size: larger;
+}
+.right-side {
+    padding: 0.5em;
+    margin-left: 1em;
+}
+.view {
+    padding: 0em 0em 0.25em 0.2em;
+
+}
+.delete {
+    padding-top: 0.25em;
+}
