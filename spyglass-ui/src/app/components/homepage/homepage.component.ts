@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 import { FormControl, FormGroup, Validators} from '@angular/forms'
+import { Router } from '@angular/router';
+import {ConfirmationService} from 'primeng/api';
 
 @Component({
   selector: 'app-homepage',
@@ -14,6 +16,9 @@ export class HomepageComponent implements OnInit {
   isDisplay = true;
   isDisplaySign = true;
   user = new User();
+  username: string = '';
+  password: string = '';
+  signInUser: any = {};
   createForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required),
@@ -25,7 +30,7 @@ export class HomepageComponent implements OnInit {
     password: new FormControl('', Validators.required)
   })
 
-  constructor(service: UserService) {
+  constructor(service: UserService, private router: Router, private confirmationService: ConfirmationService) {
     this.service = service
   }
 
@@ -43,7 +48,26 @@ export class HomepageComponent implements OnInit {
     this.service.saveUser(user).subscribe(resp => {
       console.log(resp);
     });
+    this.goTo();
   }
 
+  goTo() {
+    this.router.navigate(['/newGoal']);
+  }
 
+  checkSignIn() {
+    this.service.findByUsername(this.username).subscribe(data => {
+      this.signInUser = data;
+    })
+    console.log(this.signInUser);
+  }
+
+  confirm(){
+    this.confirmationService.confirm({
+      message: 'Are you ready to check out your goals?',
+      accept: () => {
+          console.log(this.signInUser)
+      }
+  });
+  }
 }

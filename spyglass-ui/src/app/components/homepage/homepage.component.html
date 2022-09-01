@@ -42,12 +42,14 @@
                 <img class="sign-in-logo" src="../../../assets/spyglass.png" alt="Spyglass Logo">
             </div>
             <div>
-                <form [formGroup]="signInForm">
-                    <input type="text" pInputText formControlName="username" placeholder="Username"/> <br>
-                    <input type="password" pInputText formControlName="password" placeholder="Passowrd"/> <br>
+                <form [formGroup]="signInForm" (submit)="checkSignIn(); confirm()">
+                    <input type="text" pInputText formControlName="username" placeholder="Username" [(ngModel)]="username"/> <br>
+                    <input type="password" pInputText formControlName="password" placeholder="Passowrd" [(ngModel)]="password"/> <br>
                     <button pButton type="submit" class="p-button-raised p-button-rounded">Submit</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<p-confirmDialog header="Success!" icon="pi pi-check"></p-confirmDialog>
+

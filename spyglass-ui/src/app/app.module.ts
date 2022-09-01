@@ -17,6 +17,9 @@ import {InputTextModule} from 'primeng/inputtext';
 import {InputNumberModule} from 'primeng/inputnumber';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NewGoalComponent } from './components/new-goal/new-goal.component';
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import {ConfirmationService} from 'primeng/api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -38,9 +41,11 @@ import { NewGoalComponent } from './components/new-goal/new-goal.component';
     DialogModule,
     InputTextModule,
     InputNumberModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ConfirmDialogModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

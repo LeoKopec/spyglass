@@ -18,4 +18,8 @@ export class UserService {
   saveUser(user :User) :Observable<any> {
     return this.http.post(environment.api.root + environment.api.users, user)
   }
+
+  findByUsername(username: string) :Observable<any> {
+    return this.http.get(environment.api.root + environment.api.users + "username/" + username);
+  }
 }
