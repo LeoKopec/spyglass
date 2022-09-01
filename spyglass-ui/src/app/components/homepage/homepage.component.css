@@ -1,0 +1,29 @@
+.background-image {
+    padding: 20em 15em 30em 8em;
+    background-image: url("../../../assets/background1.webp");
+    background-repeat: no-repeat;
+    outline: 2px solid black;
+    background-size: cover;
+}
+
+.content {
+    position: left center;
+}
+h1 {
+    font-size: 250%;
+    margin-bottom: 0em;
+}
+.description {
+    font-size: large;
+    padding: 0.5em 35em 0em 0.5em;
+}
+.buttons {
+    padding-top: 0.5em;
+    padding-left: 2.5em;
+}
+.sign {
+    margin-right: 0.15em;
+}
+.create {
+    margin-left: 0.15em;
+}

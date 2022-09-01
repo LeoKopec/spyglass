@@ -1,6 +1,6 @@
 <div class="display-data">
     <p-dataView [value]="goals" [paginator]="true" [rows]="10">
-        <ng-template pTemplate="header">List of Goals</ng-template>
+        <ng-template pTemplate="header"></ng-template>
         <ng-template let-goal pTemplate="listItem">
             <div class="flex-container">
                 <div class="left-side">
@@ -13,11 +13,13 @@
                         <div class="bottom">
                             <div class="progress">Progress:</div>
                             <div class="goal-money"><b>{{goal.currentAmount | currency}}</b> of <b>{{goal.totalAmount | currency}}</b></div>
-                            <!-- <div><p-progressBar [showValue]="false" [value]="((goal.currentAmount / goal.totalAmount) * 100)" [style]="{'height': '1.5em'}"></p-progressBar></div> -->
+                            <div><p-progressBar [value]="((goal.currentAmount / goal.totalAmount) * 100)" [style]="{'height': '1.5em', 'width': '30em', 'border-radius': '25px'}"></p-progressBar></div>
                         </div>
                     </div>
                 </div>
                 <div class="right-side">
+                    <div class="date">{{goal.date | date:'LLL dd, yyyy'}}</div>
+                    <br>
                     <div class="view"><button pButton pRipple type="button" label="View Goal"></button></div>
                     <br>
                     <div class="delete"><button pButton pRipple type="button" label="Delete Goal"></button></div>

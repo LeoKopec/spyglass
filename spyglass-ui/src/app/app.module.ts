@@ -10,11 +10,15 @@ import {ButtonModule} from 'primeng/button';
 import { FormsModule } from '@angular/forms';
 import {DataViewModule} from 'primeng/dataview';
 import {ProgressBarModule} from 'primeng/progressbar';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DisplayGoalsComponent
+    DisplayGoalsComponent,
+    HomepageComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
