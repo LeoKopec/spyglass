@@ -27,3 +27,64 @@ h1 {
 .create {
     margin-left: 0.15em;
 }
+.bg-create-modal {
+    width: 100%;
+    height: 130%;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15em;
+}
+.create-content {
+    width: 35em;
+    height: 25em;
+    background-color: white;
+    border-radius: 4px;
+    text-align: center;
+    position: relative;
+    border: 3px solid #49AC21;
+}
+.close {
+    position: absolute;
+    top: 0em;
+    right: 0.25em;
+    font-size: 200%;
+    cursor: pointer;
+}
+input.ng-invalid {
+    border-left: 5px solid red;
+}
+input.ng-valid {
+    border-left: 5px solid green;
+}
+.flex-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+h2 {
+    margin: 0.25em 0em 0em 0em;
+}
+.form {
+    padding: 3.75em 0em 0em 0em;
+}
+input {
+    padding: 0.35em 0em 0.35em 0.25em;
+    margin-bottom: 0.5em;
+}
+img {
+    border: 3px solid black;
+    border-radius: 50%;
+}
+.sign-in-flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.sign-in-logo {
+    height: 10em;
+    margin: 0.75em 0em 1em 0em;
+}

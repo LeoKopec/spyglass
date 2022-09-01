@@ -12,13 +12,19 @@ import {DataViewModule} from 'primeng/dataview';
 import {ProgressBarModule} from 'primeng/progressbar';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import {DialogModule} from 'primeng/dialog';
+import {InputTextModule} from 'primeng/inputtext';
+import {InputNumberModule} from 'primeng/inputnumber';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NewGoalComponent } from './components/new-goal/new-goal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayGoalsComponent,
     HomepageComponent,
-    NavbarComponent
+    NavbarComponent,
+    NewGoalComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +34,11 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     ButtonModule,
     FormsModule,
     DataViewModule,
-    ProgressBarModule
+    ProgressBarModule,
+    DialogModule,
+    InputTextModule,
+    InputNumberModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

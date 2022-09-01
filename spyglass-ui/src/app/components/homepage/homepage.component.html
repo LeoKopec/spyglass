@@ -7,8 +7,47 @@
             and manage progress towards your financial success.
         </div>
         <div class="buttons">
-            <button class="sign" pButton pRipple type="button" label="Sign In"></button>
-            <button class="create" pButton pRipple type="button" label="Create Account"></button>
+            <button class="sign" pButton pRipple type="button" label="Sign-In" (click)="toggleDisplaySign()"></button>
+            <button class="create" pButton pRipple type="button" label="Create Account" (click)="toggleDisplay()"></button>
+        </div>
+    </div>
+</div>
+<div [hidden]="isDisplay" class="bg-create-modal">
+    <div class="create-content">
+        <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text close" (click)="toggleDisplay()"></button>
+        <h2>Create Your Account:</h2>
+        <div class="flex-container">
+            <div class="logo">
+                <img src="../../../assets/spyglass.png" alt="Spyglass Logo">
+            </div>
+            <div class="form">
+                <form [formGroup]="createForm" (submit)="submit(user)">
+                    <input type="text" pInputText formControlName="username" placeholder="Username" [(ngModel)]="user.username"/> <br>
+                    <input type="password" pInputText formControlName="password" placeholder="Passowrd" [(ngModel)]="user.password"/> <br>
+                    <input type="text" pInputText formControlName="firstName" placeholder="Fist Name" [(ngModel)]="user.firstName"/> <br>
+                    <input type="text" pInputText formControlName="lastName" placeholder="Last Name" [disabled]="!createForm.invalid"[(ngModel)]="user.lastName"/> <br>
+                    <button pButton type="submit" class="p-button-raised p-button-rounded">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div [hidden]="isDisplaySign" class="bg-create-modal">
+    <div class="create-content">
+        <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text close" (click)="toggleDisplaySign()"></button>
+        <h2>Sign-In to Your Account:</h2>
+        <div class="sign-in-flex">
+            <div>
+                <img class="sign-in-logo" src="../../../assets/spyglass.png" alt="Spyglass Logo">
+            </div>
+            <div>
+                <form [formGroup]="signInForm">
+                    <input type="text" pInputText formControlName="username" placeholder="Username"/> <br>
+                    <input type="password" pInputText formControlName="password" placeholder="Passowrd"/> <br>
+                    <button pButton type="submit" class="p-button-raised p-button-rounded">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
