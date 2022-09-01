@@ -1,0 +1,16 @@
+.navbar-light {
+    /* background-color: #AEE995; */
+    background-color: rgb(97, 132, 50);
+    box-shadow: 0px 2px 5px black;
+    height: 5em;
+}
+.nav-item {
+    font-size: x-large !important;
+}
+img {
+    border-radius: 50%;
+}
+.nav-link {
+    font-size: 250% !important;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
