@@ -1,10 +1,12 @@
 <div class="display-data">
     <p-dataView [value]="goals" [paginator]="true" [rows]="10">
-        <ng-template pTemplate="header"></ng-template>
+        <ng-template pTemplate="header">
+            <div class="user-header">{{userFromHome.firstName}}'s Goals</div>
+        </ng-template>
         <ng-template let-goal pTemplate="listItem">
             <div class="flex-container">
                 <div class="left-side">
-                    <div><img src="../../../assets/placeholder.png" alt="goal image"></div>
+                    <div><img src="{{goal.image}}" alt="goal image"></div>
                     <div class="details">
                         <div class="top">
                             <div class="goal-name">{{goal.name}}</div>

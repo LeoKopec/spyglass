@@ -20,6 +20,8 @@ import { NewGoalComponent } from './components/new-goal/new-goal.component';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import {ConfirmationService} from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {ToastModule} from 'primeng/toast';
+import { SimpleNotificationsModule } from 'angular2-notifications';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     InputNumberModule,
     ReactiveFormsModule,
     ConfirmDialogModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastModule,
+    SimpleNotificationsModule.forRoot(),
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]
