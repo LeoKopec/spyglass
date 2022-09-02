@@ -1,9 +1,18 @@
 .display-data {
     padding: 2em 12em 2em 12em;
 }
+.header-flex {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
 .user-header {
     font-size: xx-large;
     font-weight: bold;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.add-button {
+    margin-right: 2em;
 }
 img {
     height: 12em;

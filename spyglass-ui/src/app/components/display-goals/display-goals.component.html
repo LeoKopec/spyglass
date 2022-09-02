@@ -1,7 +1,10 @@
 <div class="display-data">
-    <p-dataView [value]="goals" [paginator]="true" [rows]="10">
+    <p-dataView [value]="goals" [paginator]="true" [rows]="5">
         <ng-template pTemplate="header">
-            <div class="user-header">{{userFromHome.firstName}}'s Goals</div>
+            <div class="header-flex">
+                <div class="user-header">{{userFromHome.firstName}}'s Goals</div>
+                <div class="add-button"><button pButton class="p-button-success" pRipple type="button" icon="pi pi-plus" iconPos="left" label="New Goal"></button></div>
+            </div>
         </ng-template>
         <ng-template let-goal pTemplate="listItem">
             <div class="flex-container">
@@ -24,7 +27,11 @@
                     <br>
                     <div class="view"><button pButton pRipple type="button" label="View Goal"></button></div>
                     <br>
-                    <div class="delete"><button pButton pRipple type="button" label="Delete Goal"></button></div>
+                    <div class="delete">
+                        <form (submit)="confirm(goal.id)">
+                            <button pButton pRipple type="submit" label="Delete Goal"></button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </ng-template>
@@ -35,6 +42,7 @@
     <input type="text" pInputText name="searchName" [(ngModel)]="username"/> <br>
     <button pButton type="submit" class="p-button-raised p-button-rounded p-button-success">Submit</button>
 </form>
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 <!-- <p-table [value]="goals" styleClass="p-datatable-gridlines">
     <ng-template pTemplate="header">
         <tr><th class="text-center">Goal Name</th></tr>

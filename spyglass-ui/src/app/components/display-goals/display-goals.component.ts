@@ -3,6 +3,7 @@ import { Goal } from 'src/app/models/goal.model';
 import { User } from 'src/app/models/user.model';
 import { GoalService } from 'src/app/services/goal.service';
 import { HomeDisplayDataService } from 'src/app/services/home-display-data.service';
+import {ConfirmationService} from 'primeng/api';
 
 @Component({
   selector: 'app-display-goals',
@@ -16,7 +17,7 @@ export class DisplayGoalsComponent implements OnInit {
   username: string;
   userFromHome = new User();
 
-  constructor(service: GoalService, private dataService: HomeDisplayDataService) {
+  constructor(service: GoalService, private dataService: HomeDisplayDataService, private confirmationService: ConfirmationService) {
     this.service = service;
     this.username = '';
   }
@@ -25,6 +26,11 @@ export class DisplayGoalsComponent implements OnInit {
     this.dataService.currentUser.subscribe(passUser => this.userFromHome = passUser)
     this.service.findByUsername(this.userFromHome.username).subscribe(data => {
       this.goals = data;
+    });
+    this.service.refreshrequired.subscribe(response => {
+      this.service.findByUsername(this.userFromHome.username).subscribe(data => {
+        this.goals = data;
+      });
     })
   }
 
@@ -32,5 +38,21 @@ export class DisplayGoalsComponent implements OnInit {
     this.service.findByUsername(this.username).subscribe(data => {
       this.goals = data;
     })
+  }
+
+  onDelete(id :number): void {
+    this.service.deleteGoal(id).subscribe(data => {
+      console.log(data);
+    })
+  }
+
+  confirm(id: number){
+    console.log("clicked")
+    this.confirmationService.confirm({
+      message: 'Are you sure you want to delete this goal?',
+        accept: () => {
+          this.onDelete(id);
+        }
+    });
   }
 }
