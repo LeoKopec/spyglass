@@ -1,5 +1,5 @@
 <div class="display-data">
-    <p-dataView [value]="goals" [paginator]="true" [rows]="5">
+    <p-dataView [value]="goals" [paginator]="true" [rows]="3">
         <ng-template pTemplate="header">
             <div class="header-flex">
                 <div class="user-header">{{userFromHome.firstName}}'s Goals</div>
@@ -26,7 +26,7 @@
                     <div class="date">{{goal.date | date:'LLL dd, yyyy'}}</div>
                     <br>
                     <div class="view"><button pButton pRipple type="button" label="View Goal" (click)="sendDataToView(goal)"></button></div>
-                    <br>
+                    <div class="edit"><button pButton pRipple type="button" label="Update Goal" (click)="toggleDisplay(); convertGoal(goal)"></button></div>
                     <div class="delete">
                         <form (submit)="confirm(goal.id)">
                             <button pButton pRipple type="submit" label="Delete Goal"></button>
@@ -37,9 +37,34 @@
         </ng-template>
     </p-dataView>
 </div>
-<form (submit)="getGoals()">
-    <label class="labels" for="searchName">Enter Email:</label> <br>
-    <input type="text" pInputText name="searchName" [(ngModel)]="username"/> <br>
-    <button pButton type="submit" class="p-button-raised p-button-rounded p-button-success">Submit</button>
-</form>
 <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<div [hidden]="isDisplay" class="bg-create-modal">
+    <div class="create-content">
+        <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text close" (click)="toggleDisplay()"></button>
+        <h2>Edit Your Goal:</h2>
+        <div class="flex-form">
+            <div>
+                <img class="logo" src="{{updatedGoal.image}}" alt="Spyglass Logo">
+            </div>
+            <div class="form">
+                <form [formGroup]="updateForm">
+                    <div class="form-content">
+                        <div class="title-desc">
+                            <input type="text" pInputText formControlName="name" placeholder="{{updatedGoal.name}}" [(ngModel)]="updatedGoal.name" value="{{updatedGoal.name}}"> <br>
+                            <textarea pInputTextarea class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable" formControlName="description" [rows]="2" [cols]="30" [(ngModel)]="updatedGoal.description" value="{{updatedGoal.description}}"></textarea> <br>
+                        </div>
+                        <div class="img-date">
+                            <input type="text" pInputText formControlName="image" placeholder="{{updatedGoal.image}}" [(ngModel)]="updatedGoal.image" value="{{updatedGoal.image}}"> <br>
+                            <p-calendar inputId="basic" formControlName="date" placeholder="{{updatedGoal.date}}"[(ngModel)]="updatedGoal.date" [defaultDate]="updatedGoal.date"></p-calendar> <br>
+                        </div>
+                        <div class="money">
+                            <p-inputNumber mode="currency" currency="USD" formControlName="currentAmount" [(ngModel)]="updatedGoal.currentAmount">{{updatedGoal.currentAmount}}</p-inputNumber> <br>
+                            <p-inputNumber mode="currency" currency="USD" formControlName="totalAmount" [(ngModel)]="updatedGoal.totalAmount">{{updatedGoal.totalAmount}}</p-inputNumber> <br>
+                        </div>
+                    </div>
+                        <button pButton type="submit" class="p-button-raised p-button-rounded">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

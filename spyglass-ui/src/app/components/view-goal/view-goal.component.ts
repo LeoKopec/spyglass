@@ -10,6 +10,7 @@ import { DisplayGoalDataService } from 'src/app/services/display-goal-data.servi
 export class ViewGoalComponent implements OnInit {
 
   goalFromHome: Goal = new Goal()
+  percentage: any = 0;
 
   constructor(private goalDataService: DisplayGoalDataService) {
     
@@ -17,6 +18,8 @@ export class ViewGoalComponent implements OnInit {
 
   ngOnInit(): void {
     this.goalDataService.currentGoal.subscribe(passGoal => this.goalFromHome = passGoal)
+    this.percentage = (this.goalFromHome.currentAmount / this.goalFromHome.totalAmount).toFixed(2)
+
   }
 
 }

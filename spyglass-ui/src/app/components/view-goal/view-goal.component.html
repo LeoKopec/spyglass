@@ -1,1 +1,12 @@
-{{goalFromHome.name}}
+<div class="content">
+    <div class="header">
+        <div class="date">{{goalFromHome.date | date:'LLL dd, yyyy'}}</div>
+    </div>
+    <div class="image"><img src="{{goalFromHome.image}}" alt="Goal Image"></div>
+    <div class="name">{{goalFromHome.name}}</div>
+    <div class="description">{{goalFromHome.description}}</div>
+    <div class="progress">Total Saved:</div>
+    <div class="amounts">{{goalFromHome.currentAmount | currency}} of {{goalFromHome.totalAmount | currency}}</div>
+    <div><p-progressBar [value]="((goalFromHome.currentAmount / goalFromHome.totalAmount) * 100)" [style]="{'height': '1.5em', 'width': '30em', 'border-radius': '25px'}"></p-progressBar></div>
+    <div class="percent">{{percentage | percent: '1.0'}} to Your Goal</div>
+</div>

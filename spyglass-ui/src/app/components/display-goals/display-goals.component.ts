@@ -6,6 +6,7 @@ import { HomeDisplayDataService } from 'src/app/services/home-display-data.servi
 import {ConfirmationService} from 'primeng/api';
 import { Router } from '@angular/router';
 import { DisplayGoalDataService } from 'src/app/services/display-goal-data.service';
+import { FormControl, FormGroup, Validators} from '@angular/forms'
 
 @Component({
   selector: 'app-display-goals',
@@ -20,6 +21,16 @@ export class DisplayGoalsComponent implements OnInit {
   userFromHome = new User();
   passGoal: Goal = new Goal();
   goalFromHome: Goal = new Goal();
+  isDisplay = true;
+  updatedGoal :Goal = new Goal();
+  updateForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    image: new FormControl('', Validators.required),
+    date: new FormControl('', Validators.required),
+    currentAmount: new FormControl('', Validators.required),
+    totalAmount: new FormControl('', Validators.required),
+  })
 
   constructor(service: GoalService, private dataService: HomeDisplayDataService, private confirmationService: ConfirmationService, private router: Router, private goalDataService: DisplayGoalDataService) {
     this.service = service;
@@ -37,6 +48,10 @@ export class DisplayGoalsComponent implements OnInit {
       });
     })
   this.goalDataService.currentGoal.subscribe(passGoal => this.goalFromHome = passGoal)
+  }
+
+  toggleDisplay(){
+    this.isDisplay = !this.isDisplay;
   }
 
   sendDataToView(displayGoal :Goal) {
@@ -68,5 +83,9 @@ export class DisplayGoalsComponent implements OnInit {
 
   gotToViewGoal() {
     this.router.navigate(['/viewGoal']);
+  }
+
+  convertGoal(goal :Goal) {
+    this.updatedGoal = Object.assign({}, goal);
   }
 }

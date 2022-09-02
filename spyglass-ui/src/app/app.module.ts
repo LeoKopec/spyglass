@@ -23,6 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ToastModule} from 'primeng/toast';
 import { SimpleNotificationsModule } from 'angular2-notifications';
 import { ViewGoalComponent } from './components/view-goal/view-goal.component';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {CalendarModule} from 'primeng/calendar';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { ViewGoalComponent } from './components/view-goal/view-goal.component';
     BrowserAnimationsModule,
     ToastModule,
     SimpleNotificationsModule.forRoot(),
+    InputTextareaModule,
+    CalendarModule
   ],
   providers: [ConfirmationService],
   bootstrap: [AppComponent]
