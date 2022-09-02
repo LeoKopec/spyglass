@@ -4,6 +4,8 @@ import { User } from 'src/app/models/user.model';
 import { GoalService } from 'src/app/services/goal.service';
 import { HomeDisplayDataService } from 'src/app/services/home-display-data.service';
 import {ConfirmationService} from 'primeng/api';
+import { Router } from '@angular/router';
+import { DisplayGoalDataService } from 'src/app/services/display-goal-data.service';
 
 @Component({
   selector: 'app-display-goals',
@@ -16,8 +18,10 @@ export class DisplayGoalsComponent implements OnInit {
   goals: Array<Goal> = [];
   username: string;
   userFromHome = new User();
+  passGoal: Goal = new Goal();
+  goalFromHome: Goal = new Goal();
 
-  constructor(service: GoalService, private dataService: HomeDisplayDataService, private confirmationService: ConfirmationService) {
+  constructor(service: GoalService, private dataService: HomeDisplayDataService, private confirmationService: ConfirmationService, private router: Router, private goalDataService: DisplayGoalDataService) {
     this.service = service;
     this.username = '';
   }
@@ -32,6 +36,12 @@ export class DisplayGoalsComponent implements OnInit {
         this.goals = data;
       });
     })
+  this.goalDataService.currentGoal.subscribe(passGoal => this.goalFromHome = passGoal)
+  }
+
+  sendDataToView(displayGoal :Goal) {
+    this.goalDataService.editGoal(displayGoal)
+    this.gotToViewGoal();
   }
 
   getGoals() :void {
@@ -54,5 +64,9 @@ export class DisplayGoalsComponent implements OnInit {
           this.onDelete(id);
         }
     });
+  }
+
+  gotToViewGoal() {
+    this.router.navigate(['/viewGoal']);
   }
 }

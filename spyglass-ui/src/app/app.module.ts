@@ -22,6 +22,7 @@ import {ConfirmationService} from 'primeng/api';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {ToastModule} from 'primeng/toast';
 import { SimpleNotificationsModule } from 'angular2-notifications';
+import { ViewGoalComponent } from './components/view-goal/view-goal.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { SimpleNotificationsModule } from 'angular2-notifications';
     DisplayGoalsComponent,
     HomepageComponent,
     NavbarComponent,
-    NewGoalComponent
+    NewGoalComponent,
+    ViewGoalComponent
   ],
   imports: [
     BrowserModule,
