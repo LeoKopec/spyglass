@@ -40,4 +40,12 @@ export class GoalService {
     );
   }
 
+  save(goal :Goal) :Observable<any> {
+    return this.http.post(environment.api.root + environment.api.goals, goal).pipe(
+      tap(()=>{
+        this.Refreshrequired.next();
+      })
+    );
+  }
+
 }

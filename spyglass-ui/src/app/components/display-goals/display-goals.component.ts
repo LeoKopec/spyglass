@@ -22,8 +22,18 @@ export class DisplayGoalsComponent implements OnInit {
   passGoal: Goal = new Goal();
   goalFromHome: Goal = new Goal();
   isDisplay = true;
+  isDisplayNewGoal = true;
   updatedGoal :Goal = new Goal();
+  newGoal :Goal = new Goal();
   updateForm = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.required),
+    image: new FormControl('', Validators.required),
+    date: new FormControl('', Validators.required),
+    currentAmount: new FormControl('', Validators.required),
+    totalAmount: new FormControl('', Validators.required),
+  })
+  newGoalForm = new FormGroup({
     name: new FormControl('', Validators.required),
     description: new FormControl('', Validators.required),
     image: new FormControl('', Validators.required),
@@ -53,6 +63,10 @@ export class DisplayGoalsComponent implements OnInit {
 
   toggleDisplay(){
     this.isDisplay = !this.isDisplay;
+  }
+
+  toggleDisplayNewGoal(){
+    this.isDisplayNewGoal = !this.isDisplayNewGoal;
   }
 
   sendDataToView(displayGoal :Goal) {

@@ -3,7 +3,7 @@
         <ng-template pTemplate="header">
             <div class="header-flex">
                 <div class="user-header">{{userFromHome.firstName}}'s Goals</div>
-                <div class="add-button"><button pButton class="p-button-success" pRipple type="button" icon="pi pi-plus" iconPos="left" label="New Goal"></button></div>
+                <div class="add-button"><button pButton class="p-button-success" pRipple type="button" icon="pi pi-plus" iconPos="left" label="New Goal" (click)="toggleDisplayNewGoal()"></button></div>
             </div>
         </ng-template>
         <ng-template let-goal pTemplate="listItem">
@@ -69,6 +69,51 @@
                         </div>
                     </div>
                         <button pButton type="submit" class="p-button-raised p-button-rounded">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div [hidden]="isDisplayNewGoal" class="bg-create-modal">
+    <div class="create-goal">
+        <button pButton pRipple type="button" icon="pi pi-times" class="p-button-rounded p-button-danger p-button-text close" (click)="toggleDisplayNewGoal()"></button>
+        <h2>Add Your New Goal:</h2>
+        <div class="new-goal-flex">
+            <div class="img-container">
+                <img class="new-goal-img" src="../../../assets/jar.png" alt="Spyglass Logo">
+            </div>
+            <div>
+                <form [formGroup]="newGoalForm">
+                    <div class="whole-form">
+                        <div class="new-goal-form">
+                            <div class="name-img-date">
+                                <label>Goal Name:</label> <br>
+                                <input type="text" class="input-field" pInputText formControlName="name" placeholder="Goal Name" [(ngModel)]="newGoal.name"> <br>
+                                <label>Image File Name:</label> <br>
+                                <input type="text" class="input-field" pInputText formControlName="image" placeholder="Image File Name" [(ngModel)]="newGoal.image" > <br>
+                                <label>Target Date:</label> <br>
+                                <p-calendar class="input-field" inputId="basic" formControlName="date" placeholder="Target Date" [(ngModel)]="newGoal.date" ></p-calendar> <br>
+                            </div>
+                            <div>
+                                <label>Goal Description:</label> <br>
+                                <textarea pInputTextarea class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable input-field"  placeholder="Goal Description" formControlName="description" [rows]="8.25" [cols]="20" [(ngModel)]="newGoal.description"></textarea> <br>
+                            </div>
+                        </div> 
+                        <div class="numbers">
+                            <div class="current-amount">
+                                <label>Current Total Saved:</label> <br>
+                                <p-inputNumber class="input-field" mode="currency" currency="USD"  placeholder="Current Total Saved" formControlName="currentAmount" [(ngModel)]="newGoal.currentAmount"></p-inputNumber> <br>
+                            </div>
+                            <div class="total-amount">
+                                <label>Target Total:</label> <br>
+                                <p-inputNumber class="input-field" mode="currency" currency="USD" placeholder="Target Total" formControlName="totalAmount" [(ngModel)]="newGoal.totalAmount"></p-inputNumber> <br>  
+                            </div>
+                        </div>
+                        <div class="button">
+                            <button pButton type="submit" class="p-button-raised p-button-rounded">Submit</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
