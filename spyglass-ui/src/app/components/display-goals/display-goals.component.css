@@ -87,8 +87,8 @@ img {
     padding-bottom: 15em;
 }
 .create-content {
-    width: 45em;
-    height: 35em;
+    width: 57em;
+    height: 37em;
     background-color: white;
     border-radius: 4px;
     text-align: center;
@@ -117,14 +117,25 @@ img {
 }
 .form-content {
     display: flex;
-    align-items: center;
     justify-content: space-evenly;
     padding-bottom: 0.5em;
+    padding-top: 0.5em;
 }
 .title-desc {
-    padding: 2.5em 0em 0em 0em;
+    padding: 0em 0em 0em 0em;
+}
+.img-date {
+    padding: 0em 2.5em 0em 2.5em;
 }
 .money {
     
 }
+label {
+    font-size: medium;
+    font-weight: 500;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-bottom: 0em;
+    margin-bottom: 0em;
+}
+
 

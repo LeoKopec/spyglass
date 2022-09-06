@@ -9,7 +9,7 @@
         <ng-template let-goal pTemplate="listItem">
             <div class="flex-container">
                 <div class="left-side">
-                    <div><img src="{{goal.image}}" alt="goal image"></div>
+                    <div><img src="../../../assets/{{goal.image}}" alt="goal image"></div>
                     <div class="details">
                         <div class="top">
                             <div class="goal-name">{{goal.name}}</div>
@@ -44,21 +44,27 @@
         <h2>Edit Your Goal:</h2>
         <div class="flex-form">
             <div>
-                <img class="logo" src="{{updatedGoal.image}}" alt="Spyglass Logo">
+                <img class="logo" src="../../../assets/{{updatedGoal.image}}" alt="Spyglass Logo">
             </div>
             <div class="form">
-                <form [formGroup]="updateForm">
+                <form [formGroup]="updateForm" (submit)="submit(updatedGoal, updatedGoal.id)">
                     <div class="form-content">
                         <div class="title-desc">
+                            <label>Name:</label> <br>
                             <input type="text" pInputText formControlName="name" placeholder="{{updatedGoal.name}}" [(ngModel)]="updatedGoal.name" value="{{updatedGoal.name}}"> <br>
-                            <textarea pInputTextarea class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable" formControlName="description" [rows]="2" [cols]="30" [(ngModel)]="updatedGoal.description" value="{{updatedGoal.description}}"></textarea> <br>
-                        </div>
-                        <div class="img-date">
+                            <label>Picture:</label> <br>
                             <input type="text" pInputText formControlName="image" placeholder="{{updatedGoal.image}}" [(ngModel)]="updatedGoal.image" value="{{updatedGoal.image}}"> <br>
+                            <label>Target Date:</label>
                             <p-calendar inputId="basic" formControlName="date" placeholder="{{updatedGoal.date}}"[(ngModel)]="updatedGoal.date" [defaultDate]="updatedGoal.date"></p-calendar> <br>
                         </div>
+                        <div class="img-date">
+                            <label>Description:</label>
+                            <textarea pInputTextarea class="p-inputtextarea p-inputtext p-component p-element p-inputtextarea-resizable" formControlName="description" [rows]="8.25" [cols]="30" [(ngModel)]="updatedGoal.description" value="{{updatedGoal.description}}"></textarea> <br>
+                        </div>
                         <div class="money">
+                            <label>Current Savings:</label> <br>
                             <p-inputNumber mode="currency" currency="USD" formControlName="currentAmount" [(ngModel)]="updatedGoal.currentAmount">{{updatedGoal.currentAmount}}</p-inputNumber> <br>
+                            <label>Goal Savings:</label>
                             <p-inputNumber mode="currency" currency="USD" formControlName="totalAmount" [(ngModel)]="updatedGoal.totalAmount">{{updatedGoal.totalAmount}}</p-inputNumber> <br>
                         </div>
                     </div>

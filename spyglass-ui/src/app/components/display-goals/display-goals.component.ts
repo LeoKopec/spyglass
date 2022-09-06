@@ -87,5 +87,14 @@ export class DisplayGoalsComponent implements OnInit {
 
   convertGoal(goal :Goal) {
     this.updatedGoal = Object.assign({}, goal);
+    this.updatedGoal.user = this.userFromHome;
+    console.log(this.updatedGoal);
+  }
+
+  submit(goal :Goal, id :number) :void {
+    this.service.updateGoal(goal, id).subscribe(resp => {
+
+    });
+    this.toggleDisplay();
   }
 }

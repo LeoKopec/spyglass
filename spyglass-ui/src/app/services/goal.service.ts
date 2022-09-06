@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Goal } from '../models/goal.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +30,14 @@ export class GoalService {
         this.Refreshrequired.next();
       })
     );;
+  }
+
+  updateGoal(goal: Goal, id: number) :Observable<any> {
+    return this.http.put(environment.api.root + environment.api.goals + id, goal).pipe(
+      tap(()=>{
+        this.Refreshrequired.next();
+      })
+    );
   }
 
 }
