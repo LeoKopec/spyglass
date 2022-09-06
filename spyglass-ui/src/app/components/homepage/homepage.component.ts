@@ -4,13 +4,14 @@ import { UserService } from 'src/app/services/user.service';
 import { FormControl, FormGroup, Validators} from '@angular/forms'
 import { Router } from '@angular/router';
 import {ConfirmationService} from 'primeng/api';
-import { NotificationsService } from 'angular2-notifications';
 import { HomeDisplayDataService } from 'src/app/services/home-display-data.service';
+import {MessageService} from 'primeng/api';
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: ['./homepage.component.css'],
+  providers: [MessageService]
 })
 export class HomepageComponent implements OnInit {
 
@@ -34,7 +35,7 @@ export class HomepageComponent implements OnInit {
     password: new FormControl('', Validators.required)
   })
 
-  constructor(service: UserService, private router: Router, private confirmationService: ConfirmationService, private animationService: NotificationsService, private dataService: HomeDisplayDataService) {
+  constructor(service: UserService, private router: Router, private confirmationService: ConfirmationService, private messageService: MessageService, private dataService: HomeDisplayDataService) {
     this.service = service
   }
 
@@ -77,26 +78,37 @@ export class HomepageComponent implements OnInit {
 
   confirm(){
     this.confirmationService.confirm({
-      message: 'Are you ready to check out your goals?',
+      message: "Press 'Yes' to continue to goals",
       accept: () => {
           console.log(this.signInUser)
-          if (this.signInUser.password == this.password) {
-            this.sendData();
-            this.gotToGoals();
-          } else {
-            console.log("Incorrect Password")
+          
+          try {
+            if (this.signInUser.password == this.password) {
+              this.sendData();
+              this.gotToGoals();
+            } else {
+              this.showError();
+            }
+          } catch (error) {
+            console.log("Caught")
+            this.showErrorBadUsername();
           }
+
       }
   });
   }
-  // onFailure(message: any){
-  //   this.animationService.error('Success!', message, {
-  //     position: ['center'],
-  //     timeOut: 2000,
-  //     animate: 'fade',
-  //     showProgressBar: true
-  //   });
-  //   console.log("Toast")
-  // }
+  showError() {
+    this.messageService.add({key: 'tr', 
+                             severity:'error', 
+                             summary: 'Incorrect Password', 
+                             detail: 'Try to sign-in again using correct password'});
+}
+showErrorBadUsername() {
+  this.messageService.add({key: 'tr2', 
+                           severity:'error', 
+                           summary: 'Invalid Username', 
+                           detail: 'Unable to find find account under the entered username'});
+}
+
   
 }
