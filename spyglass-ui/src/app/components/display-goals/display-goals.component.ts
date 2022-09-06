@@ -112,4 +112,12 @@ export class DisplayGoalsComponent implements OnInit {
     });
     this.toggleDisplay();
   }
+
+  saveGoal(){
+    this.newGoal.user = this.userFromHome;
+    this.service.save(this.newGoal).subscribe(resp => {
+      console.log(resp);
+    });
+    this.toggleDisplayNewGoal();
+  }
 }

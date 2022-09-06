@@ -84,7 +84,7 @@
                 <img class="new-goal-img" src="../../../assets/jar.png" alt="Spyglass Logo">
             </div>
             <div>
-                <form [formGroup]="newGoalForm">
+                <form [formGroup]="newGoalForm" (submit)="saveGoal()">
                     <div class="whole-form">
                         <div class="new-goal-form">
                             <div class="name-img-date">
