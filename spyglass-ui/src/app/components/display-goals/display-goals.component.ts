@@ -48,6 +48,7 @@ export class DisplayGoalsComponent implements OnInit {
       });
     })
   this.goalDataService.currentGoal.subscribe(passGoal => this.goalFromHome = passGoal)
+  console.log(this.userFromHome)
   }
 
   toggleDisplay(){

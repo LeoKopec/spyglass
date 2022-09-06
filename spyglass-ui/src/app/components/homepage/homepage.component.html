@@ -1,5 +1,7 @@
 <p-toast position="top-right" key="tr"></p-toast>
 <p-toast position="top-right" key="tr2"></p-toast>
+<p-toast position="top-right" key="tr3"></p-toast>
+<p-toast position="top-right" key="tr4"></p-toast>
 <div class="background-image">
     <div class="content">
         <h1>Spyglass Financial Goal Tracker</h1>
@@ -28,7 +30,7 @@
                     <input type="password" pInputText formControlName="password" placeholder="Passowrd" [(ngModel)]="user.password"/> <br>
                     <input type="text" pInputText formControlName="firstName" placeholder="Fist Name" [(ngModel)]="user.firstName"/> <br>
                     <input type="text" pInputText formControlName="lastName" placeholder="Last Name" [disabled]="!createForm.invalid"[(ngModel)]="user.lastName"/> <br>
-                    <button pButton type="submit" class="p-button-raised p-button-rounded">Submit</button>
+                    <button pButton type="submit" [disabled]="!createForm.valid" class="p-button-raised p-button-rounded">Submit</button>
                 </form>
             </div>
         </div>
@@ -53,5 +55,6 @@
         </div>
     </div>
 </div>
-<p-confirmDialog header="Validating Credentials..." icon="pi pi-check"></p-confirmDialog>
+<p-confirmDialog header="Validating Credentials..." key="sign-in" icon="pi pi-check"></p-confirmDialog>
+<p-confirmDialog header="Success!" key="create" icon="pi pi-check"></p-confirmDialog>
 

@@ -58,12 +58,10 @@ export class HomepageComponent implements OnInit {
     this.service.saveUser(user).subscribe(resp => {
       console.log(resp);
     });
-    this.goTo();
+    this.toggleDisplay();
+    this.showSuccess();
   }
 
-  goTo() {
-    this.router.navigate(['/newGoal']);
-  }
 
   gotToGoals() {
     this.router.navigate(['/goals']);
@@ -73,12 +71,12 @@ export class HomepageComponent implements OnInit {
     this.service.findByUsername(this.username).subscribe(data => {
       this.signInUser = data;
     })
-    console.log(this.signInUser);
   }
 
   confirm(){
     this.confirmationService.confirm({
       message: "Press 'Yes' to continue to goals",
+      key: "sign-in",
       accept: () => {
           console.log(this.signInUser)
           
@@ -97,6 +95,8 @@ export class HomepageComponent implements OnInit {
       }
   });
   }
+
+
   showError() {
     this.messageService.add({key: 'tr', 
                              severity:'error', 
@@ -109,6 +109,17 @@ showErrorBadUsername() {
                            summary: 'Invalid Username', 
                            detail: 'Unable to find find account under the entered username'});
 }
-
+showErrorFailedCreation() {
+  this.messageService.add({key: 'tr3', 
+                           severity:'error', 
+                           summary: 'Unable to Create Account', 
+                           detail: 'Please fill in all fields'});
+}
+showSuccess() {
+  this.messageService.add({key: 'tr4', 
+                           severity:'success', 
+                           summary: 'Account Created!', 
+                           detail: 'Sign-in to create some goals'});
+}
   
 }
