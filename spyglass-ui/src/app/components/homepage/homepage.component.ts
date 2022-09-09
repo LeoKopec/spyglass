@@ -78,8 +78,6 @@ export class HomepageComponent implements OnInit {
       message: "Press 'Yes' to continue to goals",
       key: "sign-in",
       accept: () => {
-          console.log(this.signInUser)
-          
           try {
             if (this.signInUser.password == this.password) {
               this.sendData();
@@ -88,7 +86,6 @@ export class HomepageComponent implements OnInit {
               this.showError();
             }
           } catch (error) {
-            console.log("Caught")
             this.showErrorBadUsername();
           }
 
@@ -107,7 +104,7 @@ showErrorBadUsername() {
   this.messageService.add({key: 'tr2', 
                            severity:'error', 
                            summary: 'Invalid Username', 
-                           detail: 'Unable to find find account under the entered username'});
+                           detail: 'Unable to find account under the entered username'});
 }
 showErrorFailedCreation() {
   this.messageService.add({key: 'tr3', 
